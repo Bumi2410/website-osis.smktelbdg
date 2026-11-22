@@ -22,6 +22,10 @@ const HERO_SLIDES = [
   { label: "Gambar 4", image: "assets/hero/slide4.jpeg" },
   { label: "Gambar 5", image: "assets/hero/slide5.jpeg" },
   { label: "Gambar 6", image: "assets/hero/slide6.jpeg" },
+  { label: "Gambar 7", image: "assets/hero/slide7.jpeg" },
+  { label: "Gambar 8", image: "assets/hero/slide8.jpeg" },
+  { label: "Gambar 9", image: "assets/hero/slide9.jpeg" },
+  { label: "Gambar 10", image: "assets/hero/slide10.jpeg" },
 ];
 
 // Deskripsi Sekbid 2-10 adalah contoh umum, sesuaikan dengan program OSIS yang sebenarnya.
