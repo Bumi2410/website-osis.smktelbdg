@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSIS SMK Telkom Bandung</title>
+  <meta name="description" content="Website resmi OSIS SMK Telkom Bandung - Our Futures Is Up to Us!" />
+
+  <!-- Favicon (ganti dengan logo asli jika sudah tersedia) -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- Google Fonts: Poppins (heading) & Inter (teks deskripsi) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =====================================================
+       A. NAVBAR (sticky)
+       ===================================================== -->
+  <header class="navbar" id="navbar" data-testid="navbar">
+    <div class="container navbar__inner">
+      <!-- Logo: ganti assets/logo.svg dengan logo resmi (mis. assets/logo.png) -->
+      <a href="#hero" class="navbar__logo" data-testid="navbar-logo">
+        <img src="assets/logo.png" alt="Logo SMK Telkom Bandung" />
+      </a>
+
+      <!-- Menu utama (desktop) -->
+      <nav class="navbar__links" aria-label="Navigasi utama">
+        <a href="#about" class="nav-link" data-testid="nav-about">About Us</a>
+        <a href="#divisions" class="nav-link" data-testid="nav-divisions">Our Division</a>
+        <a href="#members" class="nav-link" data-testid="nav-members">Members</a>
+        <a href="#news" class="nav-link" data-testid="nav-news">News</a>
+      </nav>
+
+            <!-- JAM DIGITAL -->
+      <div class="digital-clock">
+        <span id="digitalClock">00:00:00</span>
+        <small>WIB</small>
+      </div>
+
+      <!-- Tombol menu tambahan / hamburger -->
+      <button class="navbar__toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="menuPanel" data-testid="menu-toggle-button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Panel menu: menu lengkap di desktop, hamburger menu di mobile -->
+    <div class="menu-panel" id="menuPanel" data-testid="menu-panel">
+      <a href="#hero" data-testid="menu-link-home">Home</a>
+      <a href="#mentor" data-testid="menu-link-mentor">Our Mentor</a>
+      <a href="#leaders" data-testid="menu-link-leaders">Our Leaders</a>
+      <a href="#about" data-testid="menu-link-about">About Us</a>
+      <a href="#divisions" data-testid="menu-link-divisions">Our Division</a>
+      <a href="#members" data-testid="menu-link-members">Members</a>
+      <a href="#news" data-testid="menu-link-news">News</a>
+      <a href="#footer" data-testid="menu-link-contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================
+         B. HERO SECTION
+         ===================================================== -->
+    <section class="hero" id="hero" data-testid="hero-section">
+      <div class="container hero__grid">
+        <!-- Kiri: image slider. Slide dibuat oleh script.js (lihat HERO_SLIDES) -->
+        <div class="hero__slider" id="heroSlider" data-testid="hero-slider">
+          <div class="hero__track" id="heroTrack"></div>
+          <button class="arrow-btn arrow-btn--sm hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Gambar sebelumnya" data-testid="hero-prev-button">
+            <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="arrow-btn arrow-btn--sm hero__arrow hero__arrow--next" id="heroNext" aria-label="Gambar berikutnya" data-testid="hero-next-button">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="dots hero__dots" id="heroDots" data-testid="hero-dots"></div>
+        </div>
+
+        <!-- Kanan: judul dan poin. Kelas "line" dipakai untuk animasi muncul per baris -->
+        <div class="hero__content">
+          <h1 class="hero__title" data-testid="hero-title"><span class="line"><span>OSIS SMK TELKOM BANDUNG</span></span></h1>
+          <ul class="hero__points" data-testid="hero-points">
+            <li class="line"><span>Develop your skills</span></li>
+            <li class="line"><span>Grow your leadership</span></li>
+            <li class="line"><span>Unleash your courage</span></li>
+          </ul>
+          <p class="hero__tagline line" data-testid="hero-tagline"><span>Our Futures Is Up to Us!</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         C. OUR MENTOR
+         ===================================================== -->
+    <section class="section" id="mentor" data-testid="mentor-section">
+      <div class="container">
+        <h2 class="section__title reveal">Our Mentor</h2>
+        <div class="two-col">
+          <div class="card reveal">
+            <h3 class="card__title">Mentor</h3>
+            <!-- Ganti dengan: <img src="assets/mentor/pembina.jpg" alt="Foto Pembina" class="frame-img" /> -->
+            <div class="frame" data-testid="mentor-photo">Foto Pembina</div>
+          </div>
+          <div class="card card--text reveal">
+            <!-- Isi nama dan deskripsi pembina yang sebenarnya di sini -->
+            <h3 class="card__name" data-testid="mentor-name">Annisa Siti Andyara</h3>
+            <p data-testid="mentor-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         D. OUR LEADERS
+         ===================================================== -->
+    <section class="section" id="leaders" data-testid="leaders-section">
+      <div class="container">
+        <h2 class="section__title reveal">Our Leaders</h2>
+        <div class="two-col">
+          <div class="card reveal">
+            <h3 class="card__title">The TRIMITRA</h3>
+            <!-- Ganti dengan: <img src="assets/leaders/trimitra.jpg" alt="Foto Trimitra" class="frame-img" /> -->
+            <div class="frame" data-testid="leaders-photo">Foto Trimitra</div>
+          </div>
+          <div class="card card--text reveal">
+            <h3 class="card__accent">Vision:</h3>
+            <p data-testid="leaders-vision">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3 class="card__accent">Mission:</h3>
+            <p data-testid="leaders-mission">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         E. ABOUT US
+         ===================================================== -->
+    <section class="section" id="about" data-testid="about-section">
+      <div class="container">
+        <h2 class="section__title reveal">About Us</h2>
+        <div class="card about reveal" data-testid="about-card">
+          <p><strong>OSIS SMK Telkom Bandung</strong> merupakan organisasi siswa yang menjadi wadah <strong>aspirasi, kreativitas, pengembangan potensi, dan kepemimpinan</strong> bagi seluruh peserta didik.</p>
+          <p>Kami hadir sebagai <strong>penggerak berbagai kegiatan positif</strong> di lingkungan sekolah, sekaligus menjadi <strong>jembatan komunikasi antara siswa, sekolah, dan seluruh elemen pendidikan.</strong></p>
+          <p>Melalui semangat <strong>kolaborasi, integritas, tanggung jawab, dan inovasi</strong>, kami berkomitmen menciptakan lingkungan sekolah yang <strong>aktif, inspiratif, dan penuh kesempatan untuk berkembang.</strong></p>
+          <p>Bagi kami, OSIS bukan sekadar organisasi, melainkan <strong>ruang untuk belajar memimpin, berani mengambil peran, membangun solidaritas, dan menghadirkan perubahan nyata.</strong></p>
+          <p><strong>Together, We Grow. Together, We Lead. Together, We Make a Difference.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         F. DIVISIONS (carousel, isi dari DIVISIONS di script.js)
+         ===================================================== -->
+    <section class="section" id="divisions" data-testid="divisions-section">
+      <div class="container">
+        <h2 class="section__title reveal">Divisions</h2>
+        <div class="card carousel-card reveal">
+          <button class="arrow-btn" id="divPrev" aria-label="Sekbid sebelumnya" data-testid="divisions-prev-button">
+            <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+
+          <div class="division" id="divisionSlide" aria-live="polite">
+            <div class="division__body">
+              <div class="frame division__image" id="divisionImage" data-testid="division-image"></div>
+              <p class="division__desc" id="divisionDesc" data-testid="division-description"></p>
+            </div>
+            <span class="division__name" id="divisionName" data-testid="division-name"></span>
+          </div>
+
+          <button class="arrow-btn" id="divNext" aria-label="Sekbid berikutnya" data-testid="divisions-next-button">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="dots" id="divisionDots" data-testid="division-dots"></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         G. OUR MEMBERS (carousel, isi dari MEMBERS di script.js)
+         ===================================================== -->
+    <section class="section" id="members" data-testid="members-section">
+      <div class="container">
+        <h2 class="section__title reveal">Our Members</h2>
+        <div class="card carousel-card reveal">
+          <button class="arrow-btn" id="memPrev" aria-label="Anggota sebelumnya" data-testid="members-prev-button">
+            <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+
+          <!-- Track bisa digeser dengan jari (swipe) pada layar sentuh -->
+          <div class="members__track" id="membersTrack" data-testid="members-track"></div>
+
+          <button class="arrow-btn" id="memNext" aria-label="Anggota berikutnya" data-testid="members-next-button">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         H. NEWS AND ANNOUNCEMENT (daftar dengan scrollbar sendiri)
+         ===================================================== -->
+    <section class="section" id="news" data-testid="news-section">
+      <div class="container">
+        <h2 class="section__title reveal">News and Announcement</h2>
+        <div class="card news reveal">
+          <!-- Container khusus berita: max-height + overflow-y:auto (lihat style.css) -->
+          <div class="news-list" id="newsList" tabindex="0" data-testid="news-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================
+       I. FOOTER
+       ===================================================== -->
+  <footer class="footer" id="footer" data-testid="footer">
+    <div class="container footer__grid">
+      <div class="footer__logo">
+        <img src="assets/logo.png" alt="Logo SMK Telkom Bandung" data-testid="footer-logo" />
+      </div>
+
+      <div class="footer__col">
+        <h4>Address</h4>
+        <address data-testid="footer-address">2JGG+HPR, Jl. Radio Palasari Road, Citeureup, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</address>
+      </div>
+
+      <div class="footer__col">
+        <h4>Social Media</h4>
+        <a class="social" href="https://www.instagram.com/osis.smktelbdg/" target="_blank" rel="noopener noreferrer" data-testid="footer-instagram-link">
+          <img src="assets/social-media/instagram.svg" alt="Instagram" />
+          <span>@osis.smktelbdg</span>
+        </a>
+        <a class="social" href="https://www.tiktok.com/@osis.smktelbdg" target="_blank" rel="noopener noreferrer" data-testid="footer-tiktok-link">
+          <img src="assets/social-media/tiktok.svg" alt="TikTok" />
+          <span>@osis.smktelbdg</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer__copyright">
+  <p>© 2026 OSIS SMK Telkom Bandung. All Rights Reserved.</p>
+</div>
+  </footer>
+
+  <!-- =====================================================
+       POPUP DETAIL BERITA (muncul saat "Read More" diklik)
+       ===================================================== -->
+<div class="modal" id="newsModal" aria-hidden="true" data-testid="news-modal">
+
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+    <button class="modal__close" id="modalClose" aria-label="Tutup">
+      &times;
+    </button>
+
+    <span class="modal__date" id="modalDate"></span>
+
+    <h3 id="modalTitle"></h3>
+
+    <p id="modalBody"></p>
+
+    <!-- TOMBOL PDF -->
+    <a
+      id="modalPdf"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="display: none;"
+    >
+      Baca Dokumen PDF
+    </a>
+
+  </div>
+</div>
+
+ <script src="script.js"></script>
+</body>
+</html>
