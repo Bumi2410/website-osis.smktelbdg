@@ -92,6 +92,7 @@
       </div>
     </section>
 
+
     <!-- =====================================================
          C. OUR MENTOR
          ===================================================== -->
@@ -256,6 +257,17 @@
     </section>
   </main>
 
+  <!-- Section Kritik & Saran -->
+<section class="kritik-section" id="kritik-saran">
+  <div class="kritik-container">
+    <h2>Kritik & Saran</h2>
+
+    <button id="kritikSaranBtn" class="kritik-btn">
+      Kirim Kritik & Saran
+    </button>
+  </div>
+</section>
+
   <!-- =====================================================
        I. FOOTER
        ===================================================== -->
@@ -318,6 +330,54 @@
   </div>
 </div>
 
+
+<!-- POPUP KRITIK & SARAN -->
+<div class="modal" id="kritikModal" aria-hidden="true">
+  <div class="modal__dialog kritik-dialog"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="kritikTitle">
+
+    <button class="modal__close" id="kritikClose"
+            type="button" aria-label="Tutup">
+      &times;
+    </button>
+
+    <h3 id="kritikTitle">Kritik & Saran</h3>
+    <p class="kritik-intro">
+      Suara kamu berarti untuk perkembangan OSIS SMK Telkom Bandung.
+      Sampaikan kritik dan saran dengan sopan, ya!
+    </p>
+
+    <form id="kritikForm">
+      <label for="kritikNama">Nama</label>
+      <input id="kritikNama" name="nama"
+             type="text" maxlength="80"
+             placeholder="Nama kamu" required>
+
+      <label for="kritikKelas">Kelas</label>
+      <input id="kritikKelas" name="kelas"
+             type="text" maxlength="30"
+             placeholder="Contoh: XI PPLG 1" required>
+
+      <label for="kritikPesan">Kritik dan Saran</label>
+      <textarea id="kritikPesan" name="pesan"
+                rows="5" maxlength="2000"
+                minlength="5"
+                placeholder="Tuliskan kritik atau saran kamu..."
+                required></textarea>
+
+      <button type="submit" id="kritikSubmit">
+        Kirim Kritik & Saran
+      </button>
+
+      <p id="kritikStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+
  <script src="script.js"></script>
+ <script type="module" src="firebase-feedback.js"></script>
 </body>
 </html>

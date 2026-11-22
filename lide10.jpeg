@@ -1,0 +1,145 @@
+/* =========================================================
+   OSIS SMK TELKOM BANDUNG - SCRIPT (Vanilla JavaScript)
+   Bagian:
+   1. DATA (edit di sini untuk mengganti isi website)
+   2. Navbar & menu
+   3. Hero slider
+   4. Divisions carousel
+   5. Members carousel
+   6. News + popup detail
+   7. Animasi muncul saat scroll
+   ========================================================= */
+
+/* ---------- 1. DATA ----------
+   Semua data di bawah adalah CONTOH SEMENTARA (placeholder).
+   Isi "image" dengan path gambar, mis. "assets/hero/slide-1.jpg".
+   Jika "image" kosong, kotak placeholder berlabel akan ditampilkan. */
+
+const HERO_SLIDES = [
+  { label: "Gambar 1", image: "assets/hero/slide1.jpeg" },
+  { label: "Gambar 2", image: "assets/hero/slide2.jpeg" },
+  { label: "Gambar 3", image: "assets/hero/slide3.jpeg" },
+  { label: "Gambar 4", image: "assets/hero/slide4.jpeg" },
+  { label: "Gambar 5", image: "assets/hero/slide5.jpeg" },
+  { label: "Gambar 6", image: "assets/hero/slide6.jpeg" },
+];
+
+// Deskripsi Sekbid 2-10 adalah contoh umum, sesuaikan dengan program OSIS yang sebenarnya.
+const DIVISIONS = [
+  { name: "Sekbid 1", image: "", desc: "merupakan bidang yang berfokus pada peningkatan keimanan, ketakwaan, dan pembentukan karakter religius siswa melalui berbagai kegiatan keagamaan. Berperan dalam menciptakan lingkungan sekolah yang harmonis, toleran, dan berakhlak mulia." },
+  { name: "Sekbid 2", image: "", desc: "merupakan bidang yang berfokus pada pembinaan budi pekerti luhur dan akhlak mulia. Berperan dalam menumbuhkan sikap disiplin, sopan santun, serta budaya tertib di lingkungan sekolah." },
+  { name: "Sekbid 3", image: "", desc: "merupakan bidang yang berfokus pada pembinaan kepribadian unggul, wawasan kebangsaan, dan bela negara. Berperan dalam menumbuhkan rasa cinta tanah air dan semangat nasionalisme siswa." },
+  { name: "Sekbid 4", image: "", desc: "merupakan bidang yang berfokus pada pembinaan prestasi akademik, seni, dan olahraga sesuai bakat dan minat. Berperan dalam mewadahi siswa untuk berkompetisi dan mengembangkan potensinya." },
+  { name: "Sekbid 5", image: "", desc: "merupakan bidang yang berfokus pada pembinaan demokrasi, hak asasi manusia, pendidikan politik, lingkungan hidup, dan kepekaan sosial. Berperan dalam melatih kepemimpinan dan kepedulian siswa." },
+  { name: "Sekbid 6", image: "", desc: "merupakan bidang yang berfokus pada pembinaan kreativitas, keterampilan, dan kewirausahaan. Berperan dalam mendorong siswa untuk berkarya, mandiri, dan berjiwa wirausaha." },
+  { name: "Sekbid 7", image: "", desc: "merupakan bidang yang berfokus pada pembinaan kualitas jasmani, kesehatan, dan gizi. Berperan dalam menciptakan budaya hidup sehat dan lingkungan sekolah yang bersih." },
+  { name: "Sekbid 8", image: "", desc: "merupakan bidang yang berfokus pada pembinaan sastra dan budaya. Berperan dalam melestarikan budaya serta mengembangkan apresiasi dan kreasi seni siswa." },
+  { name: "Sekbid 9", image: "", desc: "merupakan bidang yang berfokus pada pembinaan teknologi informasi dan komunikasi. Berperan dalam mengelola media, publikasi, dan pemanfaatan teknologi untuk kegiatan siswa." },
+  { name: "Sekbid 10", image: "", desc: "merupakan bidang yang berfokus pada pembinaan komunikasi dalam bahasa Inggris. Berperan dalam meningkatkan kemampuan berbahasa asing siswa melalui berbagai kegiatan." },
+];
+
+// Ganti name, division, dan image dengan data anggota yang sebenarnya.
+const MEMBERS = Array.from({ length: 12 }, (_, i) => ({
+  label: "Orang " + (i + 1),
+  name: "Nama",
+  division: "Divisi",
+  image: "",
+}));
+
+// Tanggal memakai format DD/MM/YY. Ganti seluruh isi dengan berita asli.
+const LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.";
+const NEWS = [
+  {
+    date: "22/11/26",
+    title: "Welcome to OSIS SMK Telkom Bandung",
+    summary: "Selamat datang di website resmi OSIS SMK Telkom Bandung. Temukan informasi, kegiatan, dan berbagai program organisasi siswa di sini.",
+    content: "Website resmi OSIS SMK Telkom Bandung hadir sebagai media informasi dan komunikasi bagi seluruh siswa. Melalui website ini, siswa dapat mengenal organisasi, melihat kegiatan, serta mendapatkan informasi terbaru mengenai OSIS."
+  },
+  {
+    date: "20/11/26",
+    title: "Kampanye Calon Ketua OSIS",
+    summary: "Kampanye calon ketua OSIS dimulai untuk memperkenalkan visi dan misi mereka.",
+    content: "Ke tiga calon ketua OSIS telah memulai kampanye mereka untuk memperkenalkan visi dan misi yang mereka bawa."
+  },
+  {
+    date: "10/11/26",
+    title: "Kegiatan Bulan Bahasa",
+    summary: "Mendorong perkembangan dan ketertarikan siswa dalam bidang bahasa.",
+    content: "Kegiatan bulan bahasa bertujuan untuk meningkatkan keterampilan berbahasa siswa, baik dalam hal menulis, membaca, maupun berbicara dan juga meningkatkan pemahaman tentang budaya dan literatur."
+  },
+  {
+    date: "27/10/26",
+    title: "Pengumuman Hasil Seleksi OSIS",
+    summary: "Hasil seleksi calon anggota OSIS telah diumumkan,silahkan cek informasi lebih lanjut di Read More.",
+    content: "Berikut adalah hasil seleksi calon anggota OSIS.",
+    pdf: "assets/documents/HASIL_SELEKSI_OSIS_2026.pdf",
+  },
+  {
+    date: "17/10/26",
+    title: "LDKS Calon Anggota OSIS!",
+    summary: "Dalam membangun kemampuan kepemimpinan dan keterampilan sosial siswa, OSIS menyelenggarakan LDKS.",
+    content: "Yang diharapkan menjadi wadah untuk belajar memimpin, berkolaborasi, dan menciptakan perubahan positif. Masa depan sekolah dibangun melalui kontribusi dan semangat seluruh siswanya."
+  },
+  {
+    date: "09/09/26",
+    title: "Open Recruitment Anggota OSIS",
+    summary: "Kesempatan bagi siswa untuk bergabung dan mengembangkan kemampuan kepemimpinan, kerja sama, serta kreativitas.",
+    content: "Open Recruitment OSIS merupakan kesempatan bagi siswa untuk ikut berkontribusi dalam organisasi. Informasi mengenai persyaratan, tahapan seleksi, dan jadwal pendaftaran akan diumumkan melalui kanal resmi sekolah."
+  },
+];
+
+/* ---------- Fungsi bantu ---------- */
+const $ = (selector) => document.querySelector(selector);
+
+// Mengisi sebuah kotak dengan gambar (jika ada) atau label placeholder
+function fillMedia(el, image, label) {
+  el.textContent = "";
+  if (image) {
+    const img = document.createElement("img");
+    img.src = image;
+    img.alt = label;
+    el.appendChild(img);
+  } else {
+    el.textContent = label;
+  }
+}
+
+// Membuat titik indikator; onSelect dipanggil dengan indeks titik yang diklik
+function buildDots(container, count, onSelect, testIdPrefix) {
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement("button");
+    dot.setAttribute("aria-label", "Ke nomor " + (i + 1));
+    dot.dataset.testid = testIdPrefix + "-" + i;
+    dot.addEventListener("click", () => onSelect(i));
+    container.appendChild(dot);
+  }
+  return (active) =>
+    [...container.children].forEach((d, i) => d.classList.toggle("is-active", i === active));
+}
+
+/* ---------- 2. NAVBAR & MENU ---------- */
+(function initNavbar() {
+  const navbar = $("#navbar");
+  const toggle = $("#menuToggle");
+  const panel = $("#menuPanel");
+
+  // Bayangan navbar saat halaman digulir
+  window.addEventListener("scroll", () => navbar.classList.toggle("is-scrolled", window.scrollY > 10), { passive: true });
+
+  function setMenu(open) {
+    panel.classList.toggle("is-open", open);
+    toggle.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open);
+  }
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setMenu(!panel.classList.contains("is-open"));
+  });
+  // Tutup menu setelah link diklik, klik di luar, atau tombol Escape
+  panel.addEventListener("click", (e) => e.target.tagName === "A" && setMenu(false));
+  document.addEventListener("click", (e) => !panel.contains(e.target) && setMenu(false));
+  document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+
+  // Tandai menu navbar sesuai section yang sedang terlihat
+  const links = document

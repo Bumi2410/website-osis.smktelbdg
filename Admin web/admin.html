@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page | OSIS SMK Telkom Bandung</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <main class="admin-layout" id="adminApp" hidden>
+    <header class="admin-header">
+      <h1>Admin Page</h1>
+      <div class="admin-account">
+        <span id="adminEmail"></span>
+        <button class="logout-btn" id="logoutBtn" type="button">Logout</button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <aside class="admin-sidebar">
+        <button class="nav-item active" data-page="dashboard">Dashboard</button>
+        <button class="nav-item" data-page="news">Upload<br>News</button>
+        <button class="nav-item" data-page="activity">Upload<br>Activity</button>
+        <button class="nav-item" data-page="suggestion">Suggestion</button>
+        <button class="nav-item" data-page="inbox">Inbox</button>
+      </aside>
+
+      <section class="admin-main">
+        <div class="page-heading">
+          <h2 id="pageTitle">Nama Pilihan Dashboard</h2>
+          <p id="pageSubtitle">Selamat datang di panel admin OSIS.</p>
+        </div>
+        <div class="page-panel" id="pageContent">
+          <div class="stats-grid">
+            <article class="stat-card"><span>Total News</span><strong id="newsCount">—</strong></article>
+            <article class="stat-card"><span>Total Activity</span><strong id="activityCount">—</strong></article>
+            <article class="stat-card"><span>Kritik & Saran</span><strong id="suggestionCount">—</strong></article>
+          </div>
+          <p class="muted-note">Pilih menu di sebelah kiri untuk mengelola konten website.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="loading-screen" id="adminLoading">Memeriksa akses admin...</div>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

@@ -498,3 +498,105 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
+
+
+/* =====================================
+   KRITIK & SARAN - SUPABASE
+===================================== */
+
+// GANTI DENGAN DATA PROJECT SUPABASE KAMU
+const SUPABASE_URL = "https://ctmrlkamojamqgrazzlw.supabase.co";
+const SUPABASE_KEY = "sb_publishable_s_K2Ve827nIhhwVcs8p5nw_euzhNdGP";
+
+(function initKritikSaran() {
+  const modal = document.getElementById("kritikModal");
+  const openBtn = document.getElementById("kritikSaranBtn");
+  const closeBtn = document.getElementById("kritikClose");
+  const form = document.getElementById("kritikForm");
+  const submitBtn = document.getElementById("kritikSubmit");
+  const status = document.getElementById("kritikStatus");
+
+  if (!modal || !openBtn || !closeBtn || !form) return;
+
+  function openModal() {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" &&
+        modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const nama = document.getElementById("kritikNama").value.trim();
+    const kelas = document.getElementById("kritikKelas").value.trim();
+    const pesan = document.getElementById("kritikPesan").value.trim();
+
+    if (!nama || !kelas || pesan.length < 5) {
+      status.textContent = "Mohon lengkapi formulir dengan benar.";
+      return;
+    }
+
+    if (
+      SUPABASE_URL.includes("PROJECT-REF") ||
+      SUPABASE_KEY.includes("ISI_PUBLISHABLE")
+    ) {
+      status.textContent = "Konfigurasi Supabase belum diisi.";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Mengirim...";
+    status.textContent = "";
+
+    try {
+      const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/kritik_saran`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({ nama, kelas, pesan })
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      status.textContent = "Terima kasih! Kritik dan saran berhasil dikirim.";
+      form.reset();
+
+    } catch (error) {
+      console.error("Gagal mengirim kritik:", error);
+      status.textContent =
+        "Pesan gagal dikirim. Silakan coba kembali.";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Kirim Kritik & Saran";
+    }
+  });
+})();
