@@ -246,3 +246,25 @@ button { cursor: pointer; }
   .page-panel { padding: 13px; }
   .stats-grid { grid-template-columns: 1fr; }
 }
+
+/* CMS News & Our Activity */
+.cms-form { max-width: 100%; padding-bottom: 20px; border-bottom: 1px solid #f1dede; }
+.cms-form h3, .cms-list-heading h3 { margin: 0 0 4px; color: var(--red); font-size: 15px; }
+.data-form input[type="file"] { background: #fffafa; padding: 8px; }
+.cms-actions, .cms-list-heading, .cms-item-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.secondary-btn { border: 1px solid #f2cccc; border-radius: 8px; padding: 8px 13px; color: var(--red); background: white; font-size: 12px; font-weight: 700; }
+.secondary-btn:hover { background: #fff2f2; }
+.cms-list-heading { justify-content: space-between; margin: 20px 0 12px; }
+.cms-items { display: grid; gap: 10px; }
+.cms-item { display: flex; align-items: center; gap: 12px; border: 1px solid #f2dddd; border-radius: 10px; padding: 12px; min-width: 0; }
+.cms-item-copy { flex: 1; min-width: 0; }
+.cms-item-copy strong { color: var(--red); font-size: 13px; overflow-wrap: anywhere; }
+.cms-item-copy p { margin: 4px 0; font-size: 12px; color: var(--ink); overflow-wrap: anywhere; }
+.cms-item-copy small { color: var(--muted); font-size: 10px; }
+.cms-thumb { width: 76px; height: 64px; object-fit: cover; border-radius: 7px; }
+.cms-item-actions { flex-shrink: 0; }
+@media (max-width: 600px) {
+  .cms-item { align-items: flex-start; flex-wrap: wrap; }
+  .cms-thumb { width: 64px; height: 58px; }
+  .cms-item-actions { width: 100%; justify-content: flex-end; }
+}

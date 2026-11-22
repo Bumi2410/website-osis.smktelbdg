@@ -1,0 +1,12 @@
+{
+  "name": "osis-smktelbdg-cms",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "firebase-admin": "^13.5.0"
+  }
+}

@@ -708,3 +708,13 @@ h1 .line, p.line { display: block; }
     padding: 28px 20px;
   }
 }
+
+/* Gambar thumbnail berita yang diunggah melalui dashboard */
+.news-item__image {
+  display: block;
+  width: min(100%, 220px);
+  max-height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 0 10px;
+}
