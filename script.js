@@ -50,6 +50,33 @@ const MEMBERS = Array.from({ length: 12 }, (_, i) => ({
   image: "",
 }));
 
+
+/* ---------- OUR ACTIVITY DATA ---------- */
+
+const ACTIVITIES = [
+  {
+    title: "Latihan Dasar Kepemimpinan Siswa",
+    description: "Kegiatan LDKS sebagai wadah untuk membangun jiwa kepemimpinan, kedisiplinan, kerja sama, dan tanggung jawab calon anggota OSIS.",
+    image: "assets/activity/ldks.jpeg"
+  },
+  {
+    title: "Harmoni",
+    description: "Kegiatan memeriahkan hari kemerdekaan Indonesia dengan berbagai lomba dan pertunjukan seni.",
+    image: "assets/activity/harmoni.jpeg"
+  },
+  {
+    title: "PRIMAFEST",
+    description: "Perayaan hari ulang tahun Yayasan Pendidikan Telkom setiap tahunnya.",
+    image: "assets/activity/primafest.jpeg"
+  },
+  {
+    title: "PRIMAFEST Concert",
+    description: "Perayaan hari ulang tahun Yayasan Pendidikan Telkom setiap tahunnya.",
+    image: "assets/activity/primafest1.jpeg"
+  },
+];
+
+
 // Tanggal memakai format DD/MM/YY. Ganti seluruh isi dengan berita asli.
 const LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.";
 const NEWS = [
@@ -300,6 +327,82 @@ function buildDots(container, count, onSelect, testIdPrefix) {
   $("#memPrev").addEventListener("click", () => move(-1));
   $("#memNext").addEventListener("click", () => move(1));
 })();
+
+
+/* ---------- OUR ACTIVITY SLIDER ---------- */
+
+(function initActivities() {
+  const track = $("#activityTrack");
+  const title = $("#activityTitle");
+  const description = $("#activityDescription");
+  const number = $("#activityNumber");
+
+  let index = 0;
+  let timer;
+
+  ACTIVITIES.forEach((activity) => {
+    const slide = document.createElement("div");
+    slide.className = "activity__slide";
+
+    const img = document.createElement("img");
+    img.src = activity.image;
+    img.alt = activity.title;
+    img.loading = "lazy";
+
+    slide.appendChild(img);
+    track.appendChild(slide);
+  });
+
+  const setDots = buildDots(
+    $("#activityDots"),
+    ACTIVITIES.length,
+    goTo,
+    "activity-dot"
+  );
+
+  function goTo(i) {
+    index = (i + ACTIVITIES.length) % ACTIVITIES.length;
+
+    const activity = ACTIVITIES[index];
+
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    title.textContent = activity.title;
+    description.textContent = activity.description;
+
+    number.textContent =
+      `${String(index + 1).padStart(2, "0")} / ${String(ACTIVITIES.length).padStart(2, "0")}`;
+
+    setDots(index);
+    restartAuto();
+  }
+
+  function restartAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(index + 1), 5000);
+  }
+
+  $("#activityPrev").addEventListener("click", () => goTo(index - 1));
+  $("#activityNext").addEventListener("click", () => goTo(index + 1));
+
+  // Swipe pada HP
+  let startX = 0;
+
+  $("#activitySlider").addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  $("#activitySlider").addEventListener("touchend", (e) => {
+    const diff = e.changedTouches[0].clientX - startX;
+
+    if (Math.abs(diff) > 40) {
+      goTo(index + (diff < 0 ? 1 : -1));
+    }
+  });
+
+  goTo(0);
+})();
+
 
 /* ---------- 6. NEWS + POPUP DETAIL ---------- */
 (function initNews() {
